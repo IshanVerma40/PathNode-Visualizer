@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PathNode | Real-Time Pathfinding Visualizer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <div class="logo">
+            <i class="fas fa-route"></i> <span>PathNode</span>
+        </div>
+        
+        <nav class="controls">
+            <div class="control-group">
+                <label for="algo-select">Algorithm</label>
+                <select id="algo-select">
+                    <option value="dijkstra">Dijkstra's Algorithm</option>
+                    <option value="astar">A* Search</option>
+                    <option value="bfs">Breadth-First Search</option>
+                    <option value="dfs">Depth-First Search</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="speed-select">Speed</label>
+                <select id="speed-select">
+                    <option value="5">Fast</option>
+                    <option value="20" selected>Average</option>
+                    <option value="100">Slow</option>
+                </select>
+            </div>
+
+            <div class="button-group">
+                <button id="start-btn" class="btn-primary">Visualize!</button>
+                <button id="clear-board" class="btn-secondary">Clear Board</button>
+                <button id="clear-path" class="btn-secondary">Clear Path</button>
+            </div>
+        </nav>
+    </header>
+
+    <section class="legend">
+        <div class="legend-item">
+            <div class="node start"></div> <span>Start Node</span>
+        </div>
+        <div class="legend-item">
+            <div class="node end"></div> <span>End Node</span>
+        </div>
+        <div class="legend-item">
+            <div class="node wall"></div> <span>Wall</span>
+        </div>
+        <div class="legend-item">
+            <div class="node unvisited"></div> <span>Unvisited</span>
+        </div>
+        <div class="legend-item">
+            <div class="node visited"></div> <span>Visited</span>
+        </div>
+        <div class="legend-item">
+            <div class="node path"></div> <span>Shortest Path</span>
+        </div>
+    </section>
+
+    <main class="grid-container">
+        <div id="grid" class="grid-canvas"></div>
+    </main>
+
+    <footer class="info-section">
+        <div class="tabs">
+            <button class="tab-link active" onclick="openTab(event, 'how-it-works')">How It Works</button>
+            <button class="tab-link" onclick="openTab(event, 'algo-details')">Algorithm Logic</button>
+        </div>
+
+        <div id="how-it-works" class="tab-content show">
+            <h3>Getting Started</h3>
+            <ul>
+                <li><strong>Drag</strong> the Green (Start) and Red (End) nodes to reposition them.</li>
+                <li><strong>Click and Drag</strong> over empty cells to create walls.</li>
+                <li><strong>Select</strong> an algorithm from the top menu and hit "Visualize!".</li>
+            </ul>
+        </div>
+
+        <div id="algo-details" class="tab-content">
+            <div class="algo-card">
+                <h4>Dijkstra's Algorithm</h4>
+                <p>The father of pathfinding. It guarantees the shortest path by exploring all possible directions equally. Weighted edges are its specialty.</p>
+            </div>
+            <div class="algo-card">
+                <h4>A* (A-Star)</h4>
+                <p>A smart version of Dijkstra's that uses heuristics to "guess" the distance to the target, making it much faster.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
